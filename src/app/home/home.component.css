@@ -44,19 +44,22 @@ nav ul li {
 
 
 nav ul li::after {
-   
+
     position: absolute;
     bottom: 0;
     left: 0;
     width: 0;
     height: 3px;
-    background-color: #ff6600; /* Accent color */
+    background-color: #ff6600;
+    /* Accent color */
     transition: width 0.3s ease;
 }
 
 nav ul li:hover {
-    color: #ff6600; /* Change text color on hover */
-    transform: scale(1.05); /* Slightly enlarges the item */
+    color: #ff6600;
+    /* Change text color on hover */
+    transform: scale(1.05);
+    /* Slightly enlarges the item */
 }
 
 nav ul li:hover::after {
@@ -130,6 +133,7 @@ nav ul li:hover::after {
             rgba(99, 88, 238, 1) 94.3%);
     transition: all 0.475s;
 }
+
 .hero-image {
     display: flex;
     justify-content: center;
@@ -414,5 +418,272 @@ a {
     100% {
         opacity: 1;
         transform: scale(1);
+    }
+}
+
+
+.chat-button {
+    position: fixed;
+    top: 800px;
+    /* Adjust this value to set how far from the top */
+    right: 60px;
+    animation: alwaysBounce 1s ease-out infinite;
+}
+
+
+@keyframes alwaysBounce {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    70% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.chat-button button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.chat-button img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.tooltip-container {
+    position: relative; /* Ensure tooltip is positioned relative to the container */
+    display: inline-block; /* Allow the button and tooltip to be aligned inline */
+}
+
+.tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Tooltip above the button */
+    left: 50%;
+    margin-left: -60px; /* Center the tooltip */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.tooltip-container:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+    animation: alwaysBounce 1s ease-out infinite; /* Optional bounce effect */
+}
+
+@keyframes alwaysBounce {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.chat-input {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    /* Set a width for the input area */
+    border: 1px solid #ccc;
+    /* Border around the chatbox */
+    border-radius: 10px;
+    /* Rounded corners */
+    background-color: white;
+    /* Background color for the input area */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Slight shadow */
+}
+
+.chat-box {
+    padding: 10px;
+    /* Padding for the chatbox */
+    border-bottom: 1px solid #ccc;
+    /* Separator line */
+}
+
+.chat-input input {
+    padding: 10px;
+    border: none;
+    /* Remove border */
+    border-radius: 5px 0 0 5px;
+    /* Rounded corners on the left */
+    width: calc(100% - 50px);
+    /* Full width minus the button width */
+    outline: none;
+    /* Remove outline */
+}
+
+.input-area {
+    display: flex;
+    /* Flexbox for input and button */
+}
+
+.send-button {
+    background-color: #007bff;
+    /* Blue background for send button */
+    color: white;
+    /* White text color */
+    border: none;
+    /* Remove default border */
+    border-radius: 0 5px 5px 0;
+    /* Rounded corners on the right */
+    cursor: pointer;
+    /* Pointer cursor */
+    padding: 10px;
+    /* Padding for button */
+}
+
+.chat-box {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    /* Ensure it adjusts to screen width */
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    /* Scroll if content overflows */
+    max-height: 400px;
+    /* Adjust to limit the chat box height on small screens */
+}
+
+.message {
+    display: flex;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    /* Ensures text wraps properly on small screens */
+}
+
+.user-message {
+    background-color: #d1e7ff;
+    /* Light blue for user messages */
+    align-self: flex-end;
+    /* Aligns user message to the right */
+    text-align: right;
+}
+
+.bot-message {
+    background-color: #f1f1f1;
+    /* Light grey for bot messages */
+    align-self: flex-start;
+    /* Aligns bot message to the left */
+    text-align: left;
+}
+
+p {
+    margin: 0;
+    /* Remove default paragraph margin */
+    font-size: 16px;
+    /* Adjust font size for mobile readability */
+    line-height: 1.4;
+}
+
+/* Add media queries to make the chat box responsive */
+@media only screen and (max-width: 600px) {
+    .chat-box {
+        padding: 5px;
+        max-height: 300px;
+    }
+
+    .message {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}
+
+/* From Uiverse.io by adamgiebl */
+button {
+    font-family: inherit;
+    font-size: 16px;
+    background: royalblue;
+    color: white;
+    padding: 0.5em 0.8em;
+    padding-left: 0.9em;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+button span {
+    display: block;
+    margin-left: 0.3em;
+    transition: all 0.3s ease-in-out;
+}
+
+button svg {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+}
+
+button:hover .svg-wrapper {
+    animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+button:hover svg {
+    transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+
+button:hover span {
+    transform: translateX(5em);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+    from {
+        transform: translateY(0.1em);
+    }
+
+    to {
+        transform: translateY(-0.1em);
     }
 }

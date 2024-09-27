@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkPORTFOLIO=self.webpackChunkPORTFOLIO||[]).push([[191],{76191:(d,O,s)=>{s.r(O),s.d(O,{AssumeRoleCommand:()=>l.x,STSClient:()=>n.X});var l=s(93717),n=s(74113)}}]);

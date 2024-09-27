@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { ContactService, Resumecount } from '../service/contact.service';
+import { CohereService } from '../cohere.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,7 @@ import { ContactService, Resumecount } from '../service/contact.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  constructor(private portfolioService: ContactService) {}
+  constructor(private portfolioService: ContactService,private cohereService: CohereService) {}
 
  
   downloadFile() {
@@ -31,6 +32,21 @@ export class HomeComponent {
     );
   }
 
+  isChatInputVisible: boolean = false; 
 
+  toggleChatInput() {
+    this.isChatInputVisible = !this.isChatInputVisible; // Toggle visibility
+  }
+  userMessage: string = '';
+  botResponse: string = '';
+
+  async onSendMessage() {
+    if (this.userMessage.trim()) {
+      const response = await this.cohereService.chat(this.userMessage);
+      //this.botResponse=  `You said: "${this.userMessage}". This is a response from the bot.${response}`;
+       this.botResponse = response;  // Update the bot response in the UI
+      this.userMessage = '';  
+    }
+  }
    
 }

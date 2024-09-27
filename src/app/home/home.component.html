@@ -10,7 +10,7 @@
     </nav>
     <br>
     <!-- <h2 class="text-center">Welcome to My Portfolio</h2> -->
-     <h2 class="text-center">Welcome to My Development Journey</h2>
+    <h2 class="text-center">Welcome to My Development Journey</h2>
     <br><br>
     <div id="home" class="hero-content">
 
@@ -41,4 +41,74 @@
     </div>
 </div>
 <br>
+
+<!-- <div class="chat-container">
+  <div class="chat-input">
+    <input [(ngModel)]="userMessage" type="text" placeholder="Type your message here..." />
+    <button (click)="onSendMessage()">Send</button>
+  </div>
+  
+  <div class="">
+    <p><strong></strong> {{ botResponse }}</p>
+  </div>
+</div> -->
+<!-- <div class="chat-button" (click)="toggleChatInput()">
+    <button>
+        <marquee behavior="scroll" direction="down"> <img src="assets/Screenshot from 2024-09-27 14-09-01.png"
+                alt="ChatNotAvailable"></marquee>
+        <span class="tooltip">How can I help you?</span>
+    </button>
+</div>
+
+<div class="chat-input" *ngIf="isChatInputVisible">
+    <div class="chat-box">
+        <p *ngIf="botResponse">{{ botResponse }}</p>
+    </div>
+    <div class="input-area">
+        <input type="text" [(ngModel)]="userMessage" placeholder="Type your message..." />
+        <button class="send-button" (click)="onSendMessage()">✉️</button>
+    </div>
+</div>
+
+ -->
+
+ <div class="chat-button" (click)="toggleChatInput()">
+    <button>
+        <img src="assets/Screenshot from 2024-09-27 14-09-01.png" alt="ChatNotAvailable">
+        <span class="tooltip" data-toggle="popover" data-content="How can I help you?">How can I help you?</span>
+
+    </button>
+</div>
+
+<div class="chat-input" *ngIf="isChatInputVisible">
+    <div class="chat-box">
+        <div class="message user-message" *ngIf="userMessage">
+            <p>You: {{ userMessage }}</p>
+        </div>
+        <div class="message bot-message" *ngIf="botResponse">
+            <p>{{ botResponse }}</p>
+        </div>
+    </div>
+
+    <div class="input-area">
+        <input type="text" [(ngModel)]="userMessage" placeholder="Type your message..." />
+        <button (click)="onSendMessage()">
+            <div class="svg-wrapper-1">
+                <div class="svg-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="none" d="M0 0h24v24H0z"></path>
+                        <path fill="currentColor"
+                            d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z">
+                        </path>
+                    </svg>
+                </div>
+            </div>
+            <span>Send</span>
+        </button>
+
+    </div>
+</div>
+
+
+
 <app-footer></app-footer>
